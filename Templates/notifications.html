@@ -1,0 +1,19 @@
+{% for notification in notifications %}
+<div class="row border border-dark" {% if notification.confirmed == 1 %} style="background-color:rgb(29, 177, 29);" {% else %} style="background-color:rgb(180, 179, 134);"  {% endif %}>
+    <div class="col-sm-9" style="margin-top: 6px;">
+        {% if notification.from_user == 1 %}
+        <a style="font-size:small; font-weight: bold;">You want to contact {{notification.contact.name}} {{notification.timestamp}}.</a>
+        {% else %}
+        <a style="font-size:small; font-weight: bold;">{{notification.contact.name}} wants to contact you {{notification.timestamp}}.</a>
+        {% endif %}
+        <p style="font-size:small; font-weight: bold;">Created: {{notification.date_created}} {{notification.time_created}}</p>
+    </div>
+    <div class="col-sm-3">
+        <button class="rounded btn btn-danger btn-sm deleteNotification" id="delete{{notification.id}}" notification_id="{{notification.id}}" style="margin-top: 5px; margin-bottom: 5px; text-align: center; font-size: xx-small; float: right;">✖</button>
+        {% if notification.from_user == 0 and notification.confirmed == 0 %}
+        <button class="rounded btn btn-success btn-sm confirmNotification" id="confirm{{notification.id}}" notification_id="{{notification.id}}" style="margin-top: 5px; margin-bottom: 5px; text-align: center; font-size: xx-small;float: right;">✔</button>
+        {% endif %}
+    </div>
+
+</div>
+{% endfor %}

@@ -1,0 +1,48 @@
+    {% for contact in contained %}
+    <div class="row border border-dark" id="contactRow{{contact.id}}" style="background-color:rgb(116, 103, 128);" >
+        <div class="col-sm-2">
+            <img class="rounded-circle" style="float: left; margin-left: 20px; margin-top: 5px; margin-bottom: 5px;" src="{{contact.image_path}}" width="50" height="56"/>
+        </div>
+        <div class="col-sm-3" style="margin-top: 20px;">
+            <a style="font-size:larger; font-weight: bold;">{{contact.name}}</a>
+        </div>
+        <div class="col-sm-7 callSection" id="callSection{{contact.id}}">
+            
+      
+            <button class="rounded btn btn-danger btn-sm deleteContact" id="delete{{contact.id}}" contact_id="{{contact.id}}" style="margin-top: 5px; margin-bottom: 5px; text-align: center; font-size: xx-small; float: right;">✖</button>
+            <img class="rounded-circle startCall" style="float: right; margin-top: 10px; margin-bottom: 5px; margin-right: 10px;" id="call{{contact.id}}" contact_id="{{contact.id}}" src="static/call.png" width="40" height="46"/>
+            <img class="rounded-circle muteCall" style="float: right; margin-top: 10px; margin-bottom: 5px; margin-right: 20px; display: None;" id="mutecall{{contact.id}}" contact_id="{{contact.id}}" src="static/microphone.png" width="40" height="46"/>
+            <img  class="notifyButton rounded" style="float: right; margin-top: 10px; margin-right: 20px;" id="notify{{contact.id}}" contact_id="{{contact.id}}" src="/static/notify.png" width="40" height="46" />
+            <div id="stopwatch{{contact.id}}" style="display: None; margin-top: 20px; margin-left: 35px;">00:00:00</div>
+            
+            <select name="genre" style="width: 140px; margin-top: 15px;" id="timestamp{{contact.id}}" class="form-control" id="genre" required>
+                <option>ASAP</option>
+                <option>in 5 minutes</option>
+                <option>in 10 minutes</option>
+                <option>in 20 minutes</option>
+                <option>in 30 minutes</option>
+                <option>in 45 minutes</option>
+                <option>in 1 hour</option>
+                <option>in 2 hours</option>
+                <option>in 3 hours</option>
+                <option>later this day</option>
+                <option>tomorrow</option>
+                <option>this week</option>
+            </select>
+
+        </div>
+    </div>
+    {% endfor %}
+    {% for contact in not_contained %}
+    <div class="row border border-dark" style="background-color:rgb(116, 103, 128);" >
+        <div class="col-sm-2">
+            <img class="rounded-circle" style="float: left; margin-left: 20px; margin-top: 5px; margin-bottom: 5px;" src="{{contact.image_path}}" width="50" height="56"/>
+        </div>
+        <div class="col-sm-4" style="margin-top: 20px;">
+            <a style="font-size:larger; font-weight: bold;">{{contact.name}}</a>
+        </div>
+        <div class="col-sm-6" style="margin-top: 15px;" >
+            <button class="rounded btn btn-success btn-sm addContact" id="add{{contact.id}}" contact_id="{{contact.id}}" style="margin-top: 5px; margin-bottom: 5px; text-align: center; font-size: xx-small; float: right;">➕</button>
+        </div>
+    </div>
+    {% endfor %}
