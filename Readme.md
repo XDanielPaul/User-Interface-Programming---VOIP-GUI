@@ -1,4 +1,3 @@
-Readme súbor pre ITU projekt
 Meno a priezvisko: Daniel Paul 
 Login: xpauld00
  
