@@ -12,7 +12,7 @@ import time
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "SECRET_KEY"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bykujoxjexdrch:e1c8a3a18df8920af1e1609638f70a0380b97e7be75bf15e7c1f6618bb100468@ec2-54-217-224-85.eu-west-1.compute.amazonaws.com:5432/d15f1d6b486k51'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///file.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
 
@@ -159,4 +159,4 @@ def deleteNotification():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5002)

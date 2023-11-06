@@ -1,6 +1,6 @@
 from flask_login import UserMixin
 from extensions import db
-import pandas as pd
+
 
 
 class User(UserMixin, db.Model):
